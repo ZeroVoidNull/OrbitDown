@@ -1,0 +1,1773 @@
+[
+ {
+  "key": "add_stopped_enabled",
+  "label": "不要自动开始下载",
+  "section": "downloads",
+  "type": "boolean"
+ },
+ {
+  "key": "add_to_top_of_queue",
+  "label": "添加到队列顶部",
+  "section": "downloads",
+  "type": "boolean"
+ },
+ {
+  "key": "auto_delete_mode",
+  "label": "添加后删除原始种子文件",
+  "section": "downloads",
+  "type": "enum",
+  "options": [
+   {
+    "value": 0,
+    "label": "保留原始种子文件"
+   },
+   {
+    "value": 1,
+    "label": "删除原始种子文件"
+   }
+  ]
+ },
+ {
+  "key": "merge_trackers",
+  "label": "合并 trackers 到现有 torrent",
+  "section": "downloads",
+  "type": "boolean"
+ },
+ {
+  "key": "torrent_content_layout",
+  "label": "Torrent 内容布局",
+  "section": "downloads",
+  "type": "enum",
+  "options": [
+   {
+    "value": "Original",
+    "label": "原始"
+   },
+   {
+    "value": "Subfolder",
+    "label": "创建子文件夹"
+   },
+   {
+    "value": "NoSubfolder",
+    "label": "不创建子文件夹"
+   }
+  ]
+ },
+ {
+  "key": "torrent_stop_condition",
+  "label": "Torrent 停止条件",
+  "section": "downloads",
+  "type": "enum",
+  "options": [
+   {
+    "value": "None",
+    "label": "无"
+   },
+   {
+    "value": "MetadataReceived",
+    "label": "已收到元数据"
+   },
+   {
+    "value": "FilesChecked",
+    "label": "文件已被检查"
+   }
+  ]
+ },
+ {
+  "key": "incomplete_files_ext",
+  "label": "为不完整的文件添加扩展名 .!qB",
+  "section": "downloads",
+  "type": "boolean"
+ },
+ {
+  "key": "preallocate_all",
+  "label": "为所有文件预分配磁盘空间",
+  "section": "downloads",
+  "type": "boolean"
+ },
+ {
+  "key": "auto_tmm_enabled",
+  "label": "默认 Torrent 管理模式",
+  "section": "downloads",
+  "type": "boolean"
+ },
+ {
+  "key": "use_category_paths_in_manual_mode",
+  "label": "在手动模式下使用分类路径",
+  "section": "downloads",
+  "type": "boolean",
+  "hint": "根据适当的分类路径而不是默认路径解析相对的保存路径"
+ },
+ {
+  "key": "use_subcategories",
+  "label": "启用子分类",
+  "section": "downloads",
+  "type": "boolean"
+ },
+ {
+  "key": "use_unwanted_folder",
+  "label": "将未选中的文件保留在 \".unwanted\" 文件夹中",
+  "section": "downloads",
+  "type": "boolean"
+ },
+ {
+  "key": "save_path",
+  "label": "默认保存路径",
+  "section": "downloads",
+  "type": "string"
+ },
+ {
+  "key": "temp_path_enabled",
+  "label": "使用单独的未完成目录",
+  "section": "downloads",
+  "type": "boolean"
+ },
+ {
+  "key": "temp_path",
+  "label": "未完成任务保存目录",
+  "section": "downloads",
+  "type": "string"
+ },
+ {
+  "key": "save_path_changed_tmm_enabled",
+  "label": "默认保存目录改变时重新定位",
+  "section": "downloads",
+  "type": "boolean"
+ },
+ {
+  "key": "category_changed_tmm_enabled",
+  "label": "当分类保存路径更改时",
+  "section": "downloads",
+  "type": "boolean"
+ },
+ {
+  "key": "torrent_changed_tmm_enabled",
+  "label": "当 Torrent 分类改变时",
+  "section": "downloads",
+  "type": "boolean"
+ },
+ {
+  "key": "scan_dirs",
+  "label": "自动添加种子的监控目录",
+  "section": "downloads",
+  "type": "folders"
+ },
+ {
+  "key": "mail_notification_enabled",
+  "label": "下载完成邮件通知",
+  "section": "downloads",
+  "type": "boolean"
+ },
+ {
+  "key": "mail_notification_smtp",
+  "label": "SMTP 服务器",
+  "section": "downloads",
+  "type": "string"
+ },
+ {
+  "key": "mail_notification_sender",
+  "label": "发件邮箱",
+  "section": "downloads",
+  "type": "string"
+ },
+ {
+  "key": "mail_notification_email",
+  "label": "收件邮箱",
+  "section": "downloads",
+  "type": "string"
+ },
+ {
+  "key": "mail_notification_ssl_enabled",
+  "label": "该服务器需要安全链接（SSL）",
+  "section": "downloads",
+  "type": "boolean"
+ },
+ {
+  "key": "mail_notification_auth_enabled",
+  "label": "SMTP 身份验证",
+  "section": "downloads",
+  "type": "boolean"
+ },
+ {
+  "key": "mail_notification_username",
+  "label": "用户名",
+  "section": "downloads",
+  "type": "string"
+ },
+ {
+  "key": "mail_notification_password",
+  "label": "密码",
+  "section": "downloads",
+  "type": "secret",
+  "secret": true
+ },
+ {
+  "key": "mail_notification_encryption_type",
+  "label": "邮件传输加密方式",
+  "section": "downloads",
+  "type": "enum",
+  "options": [
+   {
+    "value": "None",
+    "label": "不加密"
+   },
+   {
+    "value": "STARTTLS",
+    "label": "STARTTLS"
+   },
+   {
+    "value": "SMTPS",
+    "label": "SMTPS"
+   }
+  ]
+ },
+ {
+  "key": "autorun_enabled",
+  "label": "下载完成后运行外部程序",
+  "section": "downloads",
+  "type": "boolean",
+  "danger": true
+ },
+ {
+  "key": "autorun_program",
+  "label": "下载完成后执行的命令",
+  "section": "downloads",
+  "type": "string",
+  "danger": true
+ },
+ {
+  "key": "autorun_on_torrent_added_enabled",
+  "label": "添加任务后运行外部程序",
+  "section": "downloads",
+  "type": "boolean",
+  "danger": true
+ },
+ {
+  "key": "autorun_on_torrent_added_program",
+  "label": "添加任务后执行的命令",
+  "section": "downloads",
+  "type": "string",
+  "danger": true
+ },
+ {
+  "key": "export_dir",
+  "label": "种子文件导出目录",
+  "section": "downloads",
+  "type": "string"
+ },
+ {
+  "key": "export_dir_fin",
+  "label": "完成后种子导出目录",
+  "section": "downloads",
+  "type": "string"
+ },
+ {
+  "key": "torrent_files_backup_enabled",
+  "label": "备份种子文件",
+  "section": "downloads",
+  "type": "boolean"
+ },
+ {
+  "key": "torrent_files_backup_dir",
+  "label": "种子备份目录",
+  "section": "downloads",
+  "type": "string"
+ },
+ {
+  "key": "torrent_files_finished_backup_dir_enabled",
+  "label": "备份已完成任务的种子",
+  "section": "downloads",
+  "type": "boolean"
+ },
+ {
+  "key": "torrent_files_finished_backup_dir",
+  "label": "完成任务种子备份目录",
+  "section": "downloads",
+  "type": "string"
+ },
+ {
+  "key": "remove_torrent_file_backup",
+  "label": "删除任务时移除种子备份",
+  "section": "downloads",
+  "type": "boolean"
+ },
+ {
+  "key": "excluded_file_names_enabled",
+  "label": "排除的文件名",
+  "section": "downloads",
+  "type": "boolean"
+ },
+ {
+  "key": "excluded_file_names",
+  "label": "排除的文件名",
+  "section": "downloads",
+  "type": "textarea"
+ },
+ {
+  "key": "add_trackers",
+  "label": "附加 Tracker 列表",
+  "section": "bittorrent",
+  "type": "textarea"
+ },
+ {
+  "key": "add_trackers_enabled",
+  "label": "为新任务添加以下 Tracker",
+  "section": "bittorrent",
+  "type": "boolean"
+ },
+ {
+  "key": "alt_dl_limit",
+  "label": "备用下载限速",
+  "section": "speed",
+  "type": "number",
+  "step": 1.0,
+  "min": 0,
+  "scale": 1024,
+  "unit": "KiB/s"
+ },
+ {
+  "key": "alt_up_limit",
+  "label": "备用上传限速",
+  "section": "speed",
+  "type": "number",
+  "step": 1.0,
+  "min": 0,
+  "scale": 1024,
+  "unit": "KiB/s"
+ },
+ {
+  "key": "announce_ip",
+  "label": "向 Tracker 汇报的 IP（需重启）",
+  "section": "advanced",
+  "type": "string"
+ },
+ {
+  "key": "announce_to_all_tiers",
+  "label": "总是向所有等级的 Tracker 汇报",
+  "section": "advanced",
+  "type": "boolean"
+ },
+ {
+  "key": "announce_to_all_trackers",
+  "label": "总是向同级的所有 Tracker 汇报",
+  "section": "advanced",
+  "type": "boolean"
+ },
+ {
+  "key": "anonymous_mode",
+  "label": "启用匿名模式 ( More information )",
+  "section": "bittorrent",
+  "type": "boolean"
+ },
+ {
+  "key": "async_io_threads",
+  "label": "异步 I/O 线程数",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "bittorrent_protocol",
+  "label": "连接协议",
+  "section": "connection",
+  "type": "enum",
+  "options": [
+   {
+    "value": 0,
+    "label": "TCP 和 μTP"
+   },
+   {
+    "value": 1,
+    "label": "仅 TCP"
+   },
+   {
+    "value": 2,
+    "label": "仅 μTP"
+   }
+  ]
+ },
+ {
+  "key": "listen_port",
+  "label": "监听端口",
+  "section": "connection",
+  "type": "string",
+  "hint": "设为 0，让系统选择一个未使用的端口"
+ },
+ {
+  "key": "upnp",
+  "label": "使用我的路由器的 UPnP / NAT-PMP 端口转发",
+  "section": "connection",
+  "type": "boolean"
+ },
+ {
+  "key": "proxy_type",
+  "label": "代理类型",
+  "section": "connection",
+  "type": "enum",
+  "options": [
+   {
+    "value": "None",
+    "label": "不使用代理"
+   },
+   {
+    "value": "SOCKS4",
+    "label": "SOCKS4"
+   },
+   {
+    "value": "SOCKS5",
+    "label": "SOCKS5"
+   },
+   {
+    "value": "HTTP",
+    "label": "HTTP"
+   }
+  ]
+ },
+ {
+  "key": "proxy_ip",
+  "label": "代理服务器地址",
+  "section": "connection",
+  "type": "string"
+ },
+ {
+  "key": "proxy_port",
+  "label": "代理服务器端口",
+  "section": "connection",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "proxy_auth_enabled",
+  "label": "代理身份验证",
+  "section": "connection",
+  "type": "boolean"
+ },
+ {
+  "key": "proxy_username",
+  "label": "代理用户名",
+  "section": "connection",
+  "type": "string"
+ },
+ {
+  "key": "proxy_password",
+  "label": "代理密码",
+  "section": "connection",
+  "type": "secret",
+  "secret": true
+ },
+ {
+  "key": "proxy_bittorrent",
+  "label": "对 BitTorrent 目的使用代理",
+  "section": "connection",
+  "type": "boolean"
+ },
+ {
+  "key": "proxy_peer_connections",
+  "label": "使用代理服务器进行用户连接",
+  "section": "connection",
+  "type": "boolean"
+ },
+ {
+  "key": "proxy_hostname_lookup",
+  "label": "通过代理查找主机名",
+  "section": "connection",
+  "type": "boolean",
+  "hint": "勾选后，将通过代理查找主机名"
+ },
+ {
+  "key": "proxy_rss",
+  "label": "对 RSS 目的使用代理",
+  "section": "connection",
+  "type": "boolean"
+ },
+ {
+  "key": "proxy_misc",
+  "label": "对常规目的使用代理",
+  "section": "connection",
+  "type": "boolean"
+ },
+ {
+  "key": "i2p_enabled",
+  "label": "启用 I2P（实验性）",
+  "section": "connection",
+  "type": "boolean"
+ },
+ {
+  "key": "i2p_address",
+  "label": "I2P 路由地址",
+  "section": "connection",
+  "type": "string"
+ },
+ {
+  "key": "i2p_port",
+  "label": "I2P 路由端口",
+  "section": "connection",
+  "type": "number",
+  "step": 1.0,
+  "min": 0.0,
+  "max": 65535.0
+ },
+ {
+  "key": "i2p_mixed_mode",
+  "label": "I2P 混合模式",
+  "section": "connection",
+  "type": "boolean",
+  "hint": "If \"mixed mode\" is enabled, I2P torrents are allowed to also get peers from other sources than the tracker, and connect to regular IPs, not providing any anonymization. This may be useful if the user is not interested in the anonymization of I2P, but still wants to be able to connect to I2P peers."
+ },
+ {
+  "key": "i2p_pex_enabled",
+  "label": "启用 I2P 用户交换",
+  "section": "connection",
+  "type": "boolean"
+ },
+ {
+  "key": "ip_filter_enabled",
+  "label": "过滤规则路径 (.dat, .p2p, .p2b)",
+  "section": "connection",
+  "type": "boolean"
+ },
+ {
+  "key": "ip_filter_path",
+  "label": "IP 过滤文件路径",
+  "section": "connection",
+  "type": "string"
+ },
+ {
+  "key": "ip_filter_trackers",
+  "label": "匹配 tracker",
+  "section": "connection",
+  "type": "boolean"
+ },
+ {
+  "key": "banned_IPs",
+  "label": "已封禁 IP 地址",
+  "section": "connection",
+  "type": "textarea"
+ },
+ {
+  "key": "bdecode_depth_limit",
+  "label": "Bdecode 深度限制",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "bdecode_token_limit",
+  "label": "Bdecode 令牌限制",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "block_peers_on_privileged_ports",
+  "label": "禁止连接到特权端口上的 peer",
+  "section": "advanced",
+  "type": "boolean"
+ },
+ {
+  "key": "bypass_auth_subnet_whitelist",
+  "label": "免认证子网列表",
+  "section": "webui",
+  "type": "textarea",
+  "danger": true
+ },
+ {
+  "key": "bypass_auth_subnet_whitelist_enabled",
+  "label": "对 IP 子网白名单中的客户端跳过身份验证",
+  "section": "webui",
+  "type": "boolean",
+  "danger": true
+ },
+ {
+  "key": "bypass_local_auth",
+  "label": "对本地主机上的客户端跳过身份验证",
+  "section": "webui",
+  "type": "boolean",
+  "danger": true
+ },
+ {
+  "key": "checking_memory_use",
+  "label": "校验时内存使用扩增量",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "connection_speed",
+  "label": "每秒传出连接数",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "current_interface_address",
+  "label": "绑定到的可选 IP 地址",
+  "section": "advanced",
+  "type": "string"
+ },
+ {
+  "key": "current_interface_name",
+  "label": "当前网络接口名称",
+  "section": "advanced",
+  "type": "string",
+  "readonly": true
+ },
+ {
+  "key": "current_network_interface",
+  "label": "网络接口",
+  "section": "advanced",
+  "type": "string"
+ },
+ {
+  "key": "dht",
+  "label": "启用 DHT (去中心化网络) 以找到更多用户",
+  "section": "bittorrent",
+  "type": "boolean"
+ },
+ {
+  "key": "dht_bootstrap_nodes",
+  "label": "DHT Bootstrap 节点",
+  "section": "advanced",
+  "type": "textarea"
+ },
+ {
+  "key": "disk_cache",
+  "label": "磁盘缓存",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0,
+  "min": -1
+ },
+ {
+  "key": "disk_cache_ttl",
+  "label": "磁盘缓存到期间隔",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "disk_io_read_mode",
+  "label": "磁盘 IO 读取模式",
+  "section": "advanced",
+  "type": "enum",
+  "options": [
+   {
+    "value": 0,
+    "label": "禁用操作系统缓存"
+   },
+   {
+    "value": 1,
+    "label": "启用操作系统缓存"
+   }
+  ]
+ },
+ {
+  "key": "disk_io_type",
+  "label": "磁盘 IO 类型（需要重启）",
+  "section": "advanced",
+  "type": "enum",
+  "options": [
+   {
+    "value": 0,
+    "label": "默认"
+   },
+   {
+    "value": 1,
+    "label": "内存映射文件"
+   },
+   {
+    "value": 2,
+    "label": "遵循 POSIX"
+   },
+   {
+    "value": 3,
+    "label": "简单 pread/pwrite"
+   },
+   {
+    "value": 4,
+    "label": "pread/pwrite"
+   }
+  ]
+ },
+ {
+  "key": "disk_io_write_mode",
+  "label": "磁盘 IO 写入模式",
+  "section": "advanced",
+  "type": "enum",
+  "options": [
+   {
+    "value": 0,
+    "label": "禁用操作系统缓存"
+   },
+   {
+    "value": 1,
+    "label": "启用操作系统缓存"
+   },
+   {
+    "value": 2,
+    "label": "连续写入"
+   }
+  ]
+ },
+ {
+  "key": "disk_queue_size",
+  "label": "磁盘队列大小",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0,
+  "scale": 1024,
+  "unit": "KiB",
+  "min": 0
+ },
+ {
+  "key": "dl_limit",
+  "label": "正常下载限速",
+  "section": "speed",
+  "type": "number",
+  "step": 1.0,
+  "min": 0,
+  "scale": 1024,
+  "unit": "KiB/s"
+ },
+ {
+  "key": "dont_count_slow_torrents",
+  "label": "慢速 torrent 不计入限制内",
+  "section": "bittorrent",
+  "type": "boolean"
+ },
+ {
+  "key": "embedded_tracker_port",
+  "label": "内置 Tracker 端口",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "embedded_tracker_port_forwarding",
+  "label": "对内置 Tracker 启用端口转发",
+  "section": "advanced",
+  "type": "boolean"
+ },
+ {
+  "key": "enable_coalesce_read_write",
+  "label": "合并读写",
+  "section": "advanced",
+  "type": "boolean"
+ },
+ {
+  "key": "enable_embedded_tracker",
+  "label": "启用内置 Tracker",
+  "section": "advanced",
+  "type": "boolean"
+ },
+ {
+  "key": "enable_multi_connections_from_same_ip",
+  "label": "允许来自同一 IP 地址的多个连接",
+  "section": "advanced",
+  "type": "boolean"
+ },
+ {
+  "key": "enable_piece_extent_affinity",
+  "label": "启用相连文件块下载模式",
+  "section": "advanced",
+  "type": "boolean"
+ },
+ {
+  "key": "enable_upload_suggestions",
+  "label": "发送分块上传建议",
+  "section": "advanced",
+  "type": "boolean"
+ },
+ {
+  "key": "encryption",
+  "label": "加密模式",
+  "section": "bittorrent",
+  "type": "enum",
+  "options": [
+   {
+    "value": 0,
+    "label": "允许加密"
+   },
+   {
+    "value": 1,
+    "label": "强制加密"
+   },
+   {
+    "value": 2,
+    "label": "禁用加密"
+   }
+  ]
+ },
+ {
+  "key": "file_log_age",
+  "label": "日志保留时间",
+  "section": "behavior",
+  "type": "number",
+  "step": 1.0,
+  "min": 1.0,
+  "max": 365.0
+ },
+ {
+  "key": "file_log_age_type",
+  "label": "日志保留时间单位",
+  "section": "behavior",
+  "type": "enum",
+  "options": [
+   {
+    "value": 0,
+    "label": "天"
+   },
+   {
+    "value": 1,
+    "label": "月"
+   },
+   {
+    "value": 2,
+    "label": "年"
+   }
+  ]
+ },
+ {
+  "key": "file_log_backup_enabled",
+  "label": "当大于指定大小时备份日志文件",
+  "section": "behavior",
+  "type": "boolean"
+ },
+ {
+  "key": "file_log_delete_old",
+  "label": "删除早于指定时间的备份日志文件",
+  "section": "behavior",
+  "type": "boolean"
+ },
+ {
+  "key": "file_log_enabled",
+  "label": "写入日志文件",
+  "section": "behavior",
+  "type": "boolean"
+ },
+ {
+  "key": "file_log_max_size",
+  "label": "日志备份阈值",
+  "section": "behavior",
+  "type": "number",
+  "step": 1.0,
+  "min": 1.0,
+  "max": 1024000.0
+ },
+ {
+  "key": "file_log_path",
+  "label": "保存路径",
+  "section": "behavior",
+  "type": "string"
+ },
+ {
+  "key": "file_pool_size",
+  "label": "文件池大小",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "hashing_threads",
+  "label": "散列线程",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "i2p_inbound_length",
+  "label": "I2P 传入长度",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0,
+  "min": 0.0,
+  "max": 7.0
+ },
+ {
+  "key": "i2p_inbound_quantity",
+  "label": "I2P 传入量",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0,
+  "min": 1.0,
+  "max": 16.0
+ },
+ {
+  "key": "i2p_outbound_length",
+  "label": "I2P 传出长度",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0,
+  "min": 0.0,
+  "max": 7.0
+ },
+ {
+  "key": "i2p_outbound_quantity",
+  "label": "I2P 传出量",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0,
+  "min": 1.0,
+  "max": 16.0
+ },
+ {
+  "key": "idn_support_enabled",
+  "label": "支持国际化域名（IDN）",
+  "section": "advanced",
+  "type": "boolean"
+ },
+ {
+  "key": "limit_lan_peers",
+  "label": "对本地网络用户进行速度限制",
+  "section": "speed",
+  "type": "boolean"
+ },
+ {
+  "key": "limit_tcp_overhead",
+  "label": "对传送总开销进行速度限制",
+  "section": "speed",
+  "type": "boolean"
+ },
+ {
+  "key": "limit_utp_rate",
+  "label": "对 µTP 协议进行速度限制",
+  "section": "speed",
+  "type": "boolean"
+ },
+ {
+  "key": "lsd",
+  "label": "启用本地用户发现以找到更多用户",
+  "section": "bittorrent",
+  "type": "boolean"
+ },
+ {
+  "key": "mark_of_the_web",
+  "label": "为下载文件添加来源标记（Windows/macOS）",
+  "section": "advanced",
+  "type": "boolean"
+ },
+ {
+  "key": "max_active_checking_torrents",
+  "label": "最大同时校验任务数",
+  "section": "bittorrent",
+  "type": "number",
+  "step": 1.0,
+  "min": -1.0
+ },
+ {
+  "key": "max_active_downloads",
+  "label": "最大活动的下载数",
+  "section": "bittorrent",
+  "type": "string",
+  "hint": "-1 为不限制"
+ },
+ {
+  "key": "max_active_torrents",
+  "label": "最大活动的 torrent 数",
+  "section": "bittorrent",
+  "type": "string",
+  "hint": "-1 为不限制"
+ },
+ {
+  "key": "max_active_uploads",
+  "label": "最大活动的上传数",
+  "section": "bittorrent",
+  "type": "string",
+  "hint": "-1 为不限制"
+ },
+ {
+  "key": "max_concurrent_http_announces",
+  "label": "最大并发 HTTP 汇报",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "max_connec",
+  "label": "全局最大连接数",
+  "section": "advanced",
+  "type": "number",
+  "min": -1,
+  "hint": "-1 为不限制"
+ },
+ {
+  "key": "max_connec_per_torrent",
+  "label": "每个任务最大连接数",
+  "section": "advanced",
+  "type": "number",
+  "min": -1,
+  "hint": "-1 为不限制"
+ },
+ {
+  "key": "max_inactive_seeding_time",
+  "label": "最大不活跃做种时间（分钟）",
+  "section": "bittorrent",
+  "type": "number",
+  "min": -1
+ },
+ {
+  "key": "max_inactive_seeding_time_enabled",
+  "label": "启用不活跃做种时间限制",
+  "section": "bittorrent",
+  "type": "boolean"
+ },
+ {
+  "key": "max_ratio",
+  "label": "最大分享率",
+  "section": "bittorrent",
+  "type": "number",
+  "min": -1,
+  "step": 0.01
+ },
+ {
+  "key": "max_ratio_act",
+  "label": "达到上限后",
+  "section": "bittorrent",
+  "type": "enum",
+  "options": [
+   {
+    "value": 0,
+    "label": "停止 torrent"
+   },
+   {
+    "value": 1,
+    "label": "删除 torrent"
+   },
+   {
+    "value": 3,
+    "label": "删除 torrent 及所属文件"
+   },
+   {
+    "value": 2,
+    "label": "为 torrent 启用超级做种"
+   }
+  ]
+ },
+ {
+  "key": "max_ratio_enabled",
+  "label": "启用分享率限制",
+  "section": "bittorrent",
+  "type": "boolean"
+ },
+ {
+  "key": "max_seeding_time",
+  "label": "最大做种时间（分钟）",
+  "section": "bittorrent",
+  "type": "number",
+  "min": -1
+ },
+ {
+  "key": "max_seeding_time_enabled",
+  "label": "启用做种时间限制",
+  "section": "bittorrent",
+  "type": "boolean"
+ },
+ {
+  "key": "max_uploads",
+  "label": "全局最大上传槽数",
+  "section": "advanced",
+  "type": "number",
+  "min": -1,
+  "hint": "-1 为不限制"
+ },
+ {
+  "key": "max_uploads_per_torrent",
+  "label": "每个任务最大上传槽数",
+  "section": "advanced",
+  "type": "number",
+  "min": -1,
+  "hint": "-1 为不限制"
+ },
+ {
+  "key": "memory_working_set_limit",
+  "label": "物理内存（RAM）使用限制",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0,
+  "min": -1,
+  "hint": "这个选项在 Linux 上没那么有效"
+ },
+ {
+  "key": "outgoing_ports_max",
+  "label": "传出端口（最高）[0：禁用]",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "outgoing_ports_min",
+  "label": "传出端口（最低）[0：禁用]",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "peer_tos",
+  "label": "与 peers 连接的服务类型（ToS）",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "peer_turnover",
+  "label": "peer 进出断开百分比",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "peer_turnover_cutoff",
+  "label": "peer 进出阈值百分比",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "peer_turnover_interval",
+  "label": "peer 进出断开间隔",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "performance_warning",
+  "label": "记录性能警报",
+  "section": "behavior",
+  "type": "boolean"
+ },
+ {
+  "key": "pex",
+  "label": "启用用户交换 (PeX) 以找到更多用户",
+  "section": "bittorrent",
+  "type": "boolean"
+ },
+ {
+  "key": "python_executable_path",
+  "label": "Python 可执行路径（可能需要重新启动）",
+  "section": "advanced",
+  "type": "string"
+ },
+ {
+  "key": "queueing_enabled",
+  "label": "启用任务队列",
+  "section": "bittorrent",
+  "type": "boolean"
+ },
+ {
+  "key": "reannounce_when_address_changed",
+  "label": "当 IP 或端口更改时重新通知所有 Tracker",
+  "section": "advanced",
+  "type": "boolean"
+ },
+ {
+  "key": "recheck_completed_torrents",
+  "label": "完成后重新校验 Torrent",
+  "section": "advanced",
+  "type": "boolean"
+ },
+ {
+  "key": "request_queue_size",
+  "label": "单一 peer 的最大未完成请求数",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "resolve_peer_countries",
+  "label": "解析用户所在国家",
+  "section": "advanced",
+  "type": "boolean"
+ },
+ {
+  "key": "resume_data_storage_type",
+  "label": "恢复数据存储类型（需要重新启动）",
+  "section": "advanced",
+  "type": "enum",
+  "options": [
+   {
+    "value": "Legacy",
+    "label": "快速恢复文件"
+   },
+   {
+    "value": "SQLite",
+    "label": "SQLite 数据库（实验性功能）"
+   }
+  ]
+ },
+ {
+  "key": "rss_auto_downloading_enabled",
+  "label": "启用 RSS Torrent 自动下载",
+  "section": "rss",
+  "type": "boolean"
+ },
+ {
+  "key": "rss_download_repack_proper_episodes",
+  "label": "下载 REPACK/PROPER 版剧集",
+  "section": "rss",
+  "type": "boolean"
+ },
+ {
+  "key": "rss_fetch_delay",
+  "label": "相同的主机请求延迟",
+  "section": "rss",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "rss_max_articles_per_feed",
+  "label": "每个订阅源文章数目最大值",
+  "section": "rss",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "rss_processing_enabled",
+  "label": "启用获取 RSS 订阅",
+  "section": "rss",
+  "type": "boolean"
+ },
+ {
+  "key": "rss_refresh_interval",
+  "label": "RSS 订阅源更新间隔",
+  "section": "rss",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "rss_smart_episode_filters",
+  "label": "过滤器",
+  "section": "rss",
+  "type": "textarea"
+ },
+ {
+  "key": "save_resume_data_interval",
+  "label": "保存恢复数据间隔（分钟）",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "schedule_from_hour",
+  "label": "开始小时",
+  "section": "speed",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "schedule_from_min",
+  "label": "开始分钟",
+  "section": "speed",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "schedule_to_hour",
+  "label": "结束小时",
+  "section": "speed",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "schedule_to_min",
+  "label": "结束分钟",
+  "section": "speed",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "scheduler_days",
+  "label": "执行日期",
+  "section": "speed",
+  "type": "enum",
+  "options": [
+   {
+    "value": 0,
+    "label": "每天"
+   },
+   {
+    "value": 1,
+    "label": "工作日"
+   },
+   {
+    "value": 2,
+    "label": "周末"
+   },
+   {
+    "value": 3,
+    "label": "星期一"
+   },
+   {
+    "value": 4,
+    "label": "星期二"
+   },
+   {
+    "value": 5,
+    "label": "星期三"
+   },
+   {
+    "value": 6,
+    "label": "星期四"
+   },
+   {
+    "value": 7,
+    "label": "星期五"
+   },
+   {
+    "value": 8,
+    "label": "星期六"
+   },
+   {
+    "value": 9,
+    "label": "星期日"
+   }
+  ]
+ },
+ {
+  "key": "scheduler_enabled",
+  "label": "启用备用限速计划",
+  "section": "speed",
+  "type": "boolean"
+ },
+ {
+  "key": "send_buffer_low_watermark",
+  "label": "发送缓冲区下限",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "send_buffer_watermark",
+  "label": "发送缓冲区上限",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "send_buffer_watermark_factor",
+  "label": "发送缓冲区增长系数",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "slow_torrent_dl_rate_threshold",
+  "label": "下载速度阈值",
+  "section": "bittorrent",
+  "type": "string"
+ },
+ {
+  "key": "slow_torrent_inactive_timer",
+  "label": "Torrent 非活动计时器",
+  "section": "bittorrent",
+  "type": "string"
+ },
+ {
+  "key": "slow_torrent_ul_rate_threshold",
+  "label": "上传速度阈值",
+  "section": "bittorrent",
+  "type": "string"
+ },
+ {
+  "key": "socket_backlog_size",
+  "label": "套接字 backlog 大小",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "socket_receive_buffer_size",
+  "label": "套接字接收缓存大小 [0：系统默认值]",
+  "section": "advanced",
+  "type": "number",
+  "scale": 1024,
+  "unit": "KiB",
+  "min": 0
+ },
+ {
+  "key": "socket_send_buffer_size",
+  "label": "套接字发送缓存大小 [0：系统默认值]",
+  "section": "advanced",
+  "type": "number",
+  "scale": 1024,
+  "unit": "KiB",
+  "min": 0
+ },
+ {
+  "key": "ssrf_mitigation",
+  "label": "服务器端请求伪造（SSRF）缓解",
+  "section": "advanced",
+  "type": "boolean"
+ },
+ {
+  "key": "stop_tracker_timeout",
+  "label": "停止 Tracker 超时 [0：禁用]",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "torrent_content_remove_option",
+  "label": "Torrent 内容删除模式",
+  "section": "advanced",
+  "type": "enum",
+  "options": [
+   {
+    "value": "Delete",
+    "label": "永久删除文件"
+   },
+   {
+    "value": "MoveToTrash",
+    "label": "移动文件到回收站（如果可能）"
+   }
+  ]
+ },
+ {
+  "key": "torrent_file_size_limit",
+  "label": ".torrent 文件大小上限",
+  "section": "advanced",
+  "type": "number",
+  "scale": 1048576,
+  "unit": "MiB"
+ },
+ {
+  "key": "up_limit",
+  "label": "正常上传限速",
+  "section": "speed",
+  "type": "number",
+  "step": 1.0,
+  "min": 0,
+  "scale": 1024,
+  "unit": "KiB/s"
+ },
+ {
+  "key": "upload_choking_algorithm",
+  "label": "上传连接策略",
+  "section": "advanced",
+  "type": "enum",
+  "options": [
+   {
+    "value": 0,
+    "label": "轮流上传"
+   },
+   {
+    "value": 1,
+    "label": "最快上传"
+   },
+   {
+    "value": 2,
+    "label": "反吸血"
+   }
+  ]
+ },
+ {
+  "key": "upload_slots_behavior",
+  "label": "上传窗口策略",
+  "section": "advanced",
+  "type": "enum",
+  "options": [
+   {
+    "value": 0,
+    "label": "固定窗口数"
+   },
+   {
+    "value": 1,
+    "label": "基于上传速度"
+   }
+  ]
+ },
+ {
+  "key": "upnp_lease_duration",
+  "label": "UPnP 租期 [0：永久 ]",
+  "section": "advanced",
+  "type": "number",
+  "step": 1.0
+ },
+ {
+  "key": "use_https",
+  "label": "使用 HTTPS",
+  "section": "webui",
+  "type": "boolean",
+  "danger": true
+ },
+ {
+  "key": "utp_tcp_mixed_mode",
+  "label": "μTP 与 TCP 混合模式算法",
+  "section": "advanced",
+  "type": "enum",
+  "options": [
+   {
+    "value": 0,
+    "label": "优先使用 TCP"
+   },
+   {
+    "value": 1,
+    "label": "按用户比重 (抑制 TCP)"
+   }
+  ]
+ },
+ {
+  "key": "validate_https_tracker_certificate",
+  "label": "验证 HTTPS Tracker 证书",
+  "section": "advanced",
+  "type": "boolean"
+ },
+ {
+  "key": "web_ui_address",
+  "label": "IP 地址",
+  "section": "webui",
+  "type": "string",
+  "danger": true
+ },
+ {
+  "key": "web_ui_ban_duration",
+  "label": "禁止",
+  "section": "webui",
+  "type": "number",
+  "step": 1.0,
+  "min": 1.0,
+  "danger": true
+ },
+ {
+  "key": "web_ui_clickjacking_protection_enabled",
+  "label": "启用点击劫持保护",
+  "section": "webui",
+  "type": "boolean",
+  "danger": true
+ },
+ {
+  "key": "web_ui_csrf_protection_enabled",
+  "label": "启用跨站请求伪造 (CSRF) 保护",
+  "section": "webui",
+  "type": "boolean",
+  "danger": true
+ },
+ {
+  "key": "web_ui_domain_list",
+  "label": "服务器域名",
+  "section": "webui",
+  "type": "textarea",
+  "danger": true,
+  "hint": "白名单用于过滤 HTTP 头的 Host 参数。 为了预防 DNS 反向绑定攻击， 您应当指定供 Web UI 使用的域名。 使用 ';' 区分不同的输入。可以使用通配符 '*'。"
+ },
+ {
+  "key": "web_ui_host_header_validation_enabled",
+  "label": "启用 Host header 属性验证",
+  "section": "webui",
+  "type": "boolean",
+  "danger": true
+ },
+ {
+  "key": "web_ui_https_cert_path",
+  "label": "证书",
+  "section": "webui",
+  "type": "string",
+  "danger": true
+ },
+ {
+  "key": "web_ui_https_key_path",
+  "label": "密钥",
+  "section": "webui",
+  "type": "string",
+  "danger": true
+ },
+ {
+  "key": "web_ui_max_auth_fail_count",
+  "label": "连续失败后禁止客户端",
+  "section": "webui",
+  "type": "number",
+  "step": 1.0,
+  "min": 0.0,
+  "danger": true
+ },
+ {
+  "key": "web_ui_password",
+  "label": "WebUI 密码",
+  "section": "webui",
+  "type": "secret",
+  "secret": true,
+  "danger": true
+ },
+ {
+  "key": "web_ui_port",
+  "label": "端口",
+  "section": "webui",
+  "type": "string",
+  "danger": true
+ },
+ {
+  "key": "web_ui_secure_cookie_enabled",
+  "label": "启用 cookie 安全标志（需要 HTTPS）",
+  "section": "webui",
+  "type": "boolean",
+  "danger": true
+ },
+ {
+  "key": "web_ui_session_timeout",
+  "label": "会话超时",
+  "section": "webui",
+  "type": "number",
+  "step": 1.0,
+  "min": 0.0,
+  "danger": true
+ },
+ {
+  "key": "web_ui_username",
+  "label": "WebUI 用户名",
+  "section": "webui",
+  "type": "string",
+  "danger": true
+ },
+ {
+  "key": "add_trackers_from_url_enabled",
+  "label": "从 URL 加载附加 Tracker",
+  "section": "bittorrent",
+  "type": "boolean"
+ },
+ {
+  "key": "add_trackers_url",
+  "label": "附加 Tracker 列表 URL",
+  "section": "bittorrent",
+  "type": "string"
+ },
+ {
+  "key": "add_trackers_url_list",
+  "label": "附加 Tracker 地址列表",
+  "section": "advanced",
+  "type": "string",
+  "readonly": true
+ },
+ {
+  "key": "announce_port",
+  "label": "向 Tracker 汇报的端口",
+  "section": "advanced",
+  "type": "number"
+ },
+ {
+  "key": "enable_multi_connections_from_same_peer_id",
+  "label": "允许同一用户标识建立多个连接",
+  "section": "advanced",
+  "type": "boolean"
+ },
+ {
+  "key": "hostname_cache_ttl",
+  "label": "主机名缓存有效期（秒）",
+  "section": "advanced",
+  "type": "number",
+  "step": 1
+ },
+ {
+  "key": "i2p_inbound_length_variance",
+  "label": "I2P 入站隧道长度变化",
+  "section": "advanced",
+  "type": "number",
+  "step": 1,
+  "min": -7,
+  "max": 7,
+  "hint": "允许 -7 到 7 的整数"
+ },
+ {
+  "key": "i2p_outbound_length_variance",
+  "label": "I2P 出站隧道长度变化",
+  "section": "advanced",
+  "type": "number",
+  "step": 1,
+  "min": -7,
+  "max": 7,
+  "hint": "允许 -7 到 7 的整数"
+ },
+ {
+  "key": "ignore_ssl_errors",
+  "label": "忽略 TLS 证书错误",
+  "section": "advanced",
+  "type": "boolean"
+ },
+ {
+  "key": "max_outstanding_block_requests",
+  "label": "最大未完成分块请求数",
+  "section": "advanced",
+  "type": "number",
+  "step": 1
+ },
+ {
+  "key": "resolve_peer_host_names",
+  "label": "解析用户主机名",
+  "section": "advanced",
+  "type": "boolean"
+ },
+ {
+  "key": "save_statistics_interval",
+  "label": "保存统计信息间隔（分钟）",
+  "section": "advanced",
+  "type": "number",
+  "step": 1
+ },
+ {
+  "key": "seeding_outgoing_connections",
+  "label": "做种时建立主动连接",
+  "section": "advanced",
+  "type": "boolean"
+ },
+ {
+  "key": "share_limits_mode",
+  "label": "分享限制策略",
+  "section": "bittorrent",
+  "type": "enum",
+  "options": [
+   {
+    "value": "MatchAny",
+    "label": "满足任意限制后操作"
+   },
+   {
+    "value": "MatchAll",
+    "label": "满足全部限制后操作"
+   }
+  ]
+ },
+ {
+  "key": "shutdown_timeout",
+  "label": "关闭等待时间（秒）",
+  "section": "advanced",
+  "type": "number"
+ },
+ {
+  "key": "start_paused",
+  "label": "启动时暂停任务",
+  "section": "advanced",
+  "type": "boolean"
+ },
+ {
+  "key": "store_search_job_results",
+  "label": "保存搜索结果",
+  "section": "behavior",
+  "type": "boolean"
+ },
+ {
+  "key": "store_search_jobs",
+  "label": "保存搜索任务",
+  "section": "behavior",
+  "type": "boolean"
+ },
+ {
+  "key": "web_ui_api_key",
+  "label": "WebUI API 密钥",
+  "section": "webui",
+  "type": "secret",
+  "secret": true,
+  "readonly": true,
+  "danger": true
+ },
+ {
+  "key": "web_ui_sessions_count_limit",
+  "label": "WebUI 最大会话数",
+  "section": "webui",
+  "type": "number",
+  "step": 1,
+  "danger": true
+ },
+ {
+  "key": "webtorrent_stun_server",
+  "label": "WebTorrent STUN 服务器",
+  "section": "advanced",
+  "type": "string"
+ }
+]

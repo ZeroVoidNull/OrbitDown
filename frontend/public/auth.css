@@ -1,0 +1,74 @@
+:root {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif;
+  color: #202126;
+  background: #f5f5f7;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: #f5f5f7;
+  isolation: isolate;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: #f5f5f7;
+  background-image:
+    url("/orbit-background.svg"),
+    radial-gradient(ellipse at 12% 5%, #e5e7f088, transparent 58%),
+    radial-gradient(ellipse at 90% 85%, #dfe8f077, transparent 60%);
+  background-size: cover;
+  background-position: center;
+}
+main {
+  width: 440px;
+  max-width: 100%;
+  padding: 36px;
+  border: 1px solid white;
+  border-radius: 24px;
+  background: #fffffff0;
+  box-shadow: 0 8px 35px #2021260d;
+}
+img {
+  display: block;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 26px;
+}
+h1 {
+  font-size: 25px;
+  font-weight: 600;
+  margin: 0 0 18px;
+  letter-spacing: -0.7px;
+}
+p {
+  font-size: 14px;
+  color: #727782;
+  line-height: 1.8;
+  margin: 0 0 30px;
+}
+a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  border-radius: 999px;
+  background: #202126;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+a:focus-visible {
+  outline: 3px solid #8791a5;
+  outline-offset: 4px;
+}

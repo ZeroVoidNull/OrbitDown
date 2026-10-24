@@ -1,0 +1,244 @@
+/* OrbitDown 动效体系：时长/缓动 token、全局 reduced-motion 回退、
+   视图与组件动画。仅使用 transform/opacity（含 width 的进度条例外），
+   不触发布局抖动；移动端 (<768px) 模态动画见 mobile-navigation.css。 */
+
+:root {
+  --motion-fast: 120ms;
+  --motion-base: 200ms;
+  --motion-slow: 320ms;
+  --motion-ease: cubic-bezier(0.2, 0, 0, 1);
+  --motion-spring: cubic-bezier(0.34, 1.26, 0.44, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* —— 视图切换（启动屏 → 登录 → 主界面） ——
+   to 帧不声明 transform：fill both 会在动画结束后永久保留
+   translateY(0)，令 .app-shell 后代的 position:fixed 全部失效
+   （移动端底部导航会随内容滚走）。 */
+@keyframes view-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.boot-screen,
+.login-layout,
+.app-shell {
+  animation: view-enter var(--motion-slow) var(--motion-ease) both;
+}
+.login-panel {
+  animation: rise-in 360ms var(--motion-spring) 50ms both;
+}
+
+/* —— 概览卡片依次入场 —— */
+.overview .stat-card {
+  animation: rise-in var(--motion-slow) var(--motion-ease) both;
+}
+.overview .stat-card:nth-child(2) {
+  animation-delay: 60ms;
+}
+.overview .stat-card:nth-child(3) {
+  animation-delay: 120ms;
+}
+
+/* —— 空状态入场 —— */
+.empty-state {
+  animation: rise-in var(--motion-slow) var(--motion-ease) both;
+}
+
+/* —— 骨架屏扫光 —— */
+@keyframes shimmer {
+  from {
+    background-position: -420px 0;
+  }
+  to {
+    background-position: 420px 0;
+  }
+}
+.task-skeleton > div > span,
+.task-skeleton i,
+.task-skeleton b {
+  background: linear-gradient(90deg, #efeff3 25%, #f9f9fc 37%, #efeff3 63%)
+    #efeff3;
+  background-size: 840px 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+/* —— 桌面模态与抽屉入场 —— */
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .modal-backdrop {
+    animation: backdrop-in var(--motion-base) ease-out both;
+  }
+  .modal-backdrop .modal {
+    animation: modal-in 280ms var(--motion-spring) both;
+  }
+  .modal-backdrop.drawer .modal {
+    animation-name: drawer-in;
+  }
+}
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes drawer-in {
+  from {
+    opacity: 0;
+    transform: translateX(48px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* —— 种子列表（TransitionGroup：进出场与 FLIP 重排） —— */
+.list-enter-active {
+  transition:
+    opacity var(--motion-base) var(--motion-ease),
+    transform var(--motion-base) var(--motion-ease);
+}
+.list-enter-from {
+  opacity: 0;
+  transform: translateY(8px);
+}
+.list-leave-active {
+  transition: opacity 150ms ease;
+}
+.list-leave-to {
+  opacity: 0;
+}
+.list-move {
+  transition: transform var(--motion-slow) var(--motion-ease);
+}
+
+/* —— 下拉菜单展开（CapsuleSelect，popover） —— */
+.capsule-select-menu[data-open="true"] {
+  animation: menu-in 160ms var(--motion-ease) both;
+}
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98) translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* —— 微交互：按钮与导航 —— */
+.button,
+.icon-button,
+.text-button,
+.nav-item,
+.workspace-navigation button,
+.sidebar-settings,
+.instance-pill,
+.tag-cloud button {
+  transition:
+    transform var(--motion-fast) var(--motion-ease),
+    background-color var(--motion-base) ease,
+    color var(--motion-base) ease,
+    border-color var(--motion-base) ease,
+    box-shadow var(--motion-base) ease;
+}
+.button:active,
+.icon-button:active,
+.text-button:active,
+.nav-item:active,
+.workspace-navigation button:active {
+  transform: scale(0.96);
+}
+
+/* —— 数据状态过渡 —— */
+.progress-track > span {
+  transition:
+    width 400ms linear,
+    background-color var(--motion-base) ease;
+}
+.status,
+.status i {
+  transition: color var(--motion-base) ease, background-color var(--motion-base) ease;
+}
+.connection-dot {
+  transition: background-color var(--motion-base) ease;
+}
+.speed-mode-switch {
+  transition: transform var(--motion-slow) var(--motion-spring);
+}
+
+/* —— 工作区导航滑动指示器 ——
+   胶囊轨道（workspaces.css 的 :is(...) 体系）中选中态白底由指示器承载；
+   指示器形状与按钮一致（radius 999px），位置尺寸由 JS 按钮实测值驱动。 */
+.workspace-navigation {
+  position: relative;
+}
+.workspace-indicator {
+  position: absolute;
+  left: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #fff;
+  box-shadow: 0 2px 5px #2021260d;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+  transition:
+    transform var(--motion-slow) var(--motion-spring),
+    width var(--motion-slow) var(--motion-spring),
+    opacity var(--motion-base) ease;
+}
+.workspace-navigation
+  > button:is(.active, [aria-selected="true"], [aria-pressed="true"])[aria-pressed] {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+.workspace-navigation button {
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 767px) {
+  .workspace-indicator {
+    border-radius: 9px;
+  }
+}

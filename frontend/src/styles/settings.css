@@ -1,0 +1,520 @@
+.modal.wide:not(.page-panel):has(.settings-workspace) {
+  width: min(1360px, calc(100vw - 64px));
+  padding-bottom: 0;
+}
+.settings-workspace {
+  min-height: 360px;
+}
+.settings-search {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: #f4f5f8;
+  border: 1px solid #e6e9ef;
+  border-radius: 999px;
+  padding: 0 13px;
+  color: #8b95a5;
+  margin-bottom: 17px;
+}
+.settings-search input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  height: 46px;
+  font-size: 14px;
+  outline: none;
+}
+.settings-search > span {
+  font-size: 11px;
+  white-space: nowrap;
+}
+.settings-layout {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 32px;
+}
+.settings-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 58svh;
+  overflow: auto;
+  padding-right: 3px;
+}
+.settings-groups button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+  gap: 10px;
+  padding: 10px 13px;
+  border-radius: 9px;
+  font-size: 13px;
+  color: #8e98a8;
+  text-align: left;
+}
+.settings-groups button.active {
+  background: #eef1f6;
+  color: #44546b;
+  font-weight: 600;
+}
+.settings-groups button span {
+  font-size: 10px;
+  color: #a0a9b6;
+}
+.settings-content {
+  max-height: 58svh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0 14px 15px 0;
+  min-width: 0;
+}
+.settings-content h3 {
+  font-size: 16px;
+  margin: 26px 0 10px;
+  font-weight: 600;
+}
+.settings-content h3:first-of-type {
+  margin-top: 17px;
+}
+.settings-scope {
+  font-size: 11px;
+  color: #9aa2ae;
+  line-height: 1.7;
+}
+.preference-row {
+  display: grid;
+  grid-template-columns: minmax(180px, 250px) minmax(0, 560px);
+  align-items: start;
+  column-gap: 24px;
+  padding: 13px 18px;
+  border-radius: 14px;
+  background: #f7f8fa;
+  min-width: 0;
+}
+.preference-row + .preference-row {
+  margin-top: 6px;
+}
+.preference-label {
+  display: block;
+  font-size: 12px;
+  color: #707b8c;
+  font-weight: 550;
+  line-height: 1.7;
+  margin: 0;
+  padding-top: 13px;
+  /* 未知设置键是长英文串，无换行点时会把行撑出面板 */
+  overflow-wrap: anywhere;
+}
+.preference-row input:not([type="checkbox"]),
+.preference-row textarea,
+.capsule-select-trigger {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 44px;
+  border: 1px solid #e0e5ee;
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-size: 13px;
+  color: #5c6a7e;
+  min-width: 0;
+}
+/* 行卡片底色之下的控件用白底，提高特异性压过 components.css 的统一灰底 */
+.settings-content .preference-row input:not([type="checkbox"]),
+.settings-content .preference-row textarea,
+.settings-content .capsule-select-trigger {
+  background: #ffffff;
+}
+.preference-row textarea {
+  border-radius: 16px;
+  resize: vertical;
+  line-height: 1.8;
+}
+.preference-input {
+  position: relative;
+}
+.preference-input:has(> span) > input {
+  padding-right: 74px;
+}
+.preference-input > span {
+  position: absolute;
+  right: 13px;
+  top: 15px;
+  font-size: 11px;
+  color: #a0a9b8;
+}
+.preference-checkbox {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(180px, 250px) minmax(0, 560px);
+  align-items: center;
+  column-gap: 24px;
+  min-height: 44px;
+}
+.preference-checkbox strong {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #707b8c;
+  overflow-wrap: anywhere;
+}
+.preference-checkbox small,
+.preference-hint {
+  display: block;
+  font-size: 10px;
+  color: #a0a9b6;
+  line-height: 1.8;
+  margin-top: 5px;
+}
+.secret-control {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.secret-control input {
+  flex: 1;
+}
+.clear-secret {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 11px;
+  color: #a5adba;
+  margin-top: 3px;
+}
+
+.watched-folder {
+  display: grid;
+  grid-template-columns: 1fr 1fr 44px;
+  gap: 9px;
+  margin-bottom: 12px;
+  align-items: center;
+}
+.watched-folder > input {
+  grid-column: 1/3;
+  grid-row: 2;
+}
+.watched-folder > button {
+  grid-column: 3;
+  grid-row: 1/3;
+}
+.watched-folder label,
+.watched-folder > .capsule-select {
+  min-width: 0;
+}
+.watched-folders .button {
+  font-size: 11px;
+}
+.preference-control {
+  min-width: 0;
+}
+.preference-readonly {
+  opacity: 0.7;
+}
+.settings-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-top: 1px solid #e4e8f0;
+  padding: 18px 0;
+  background: #fffffff7;
+  position: sticky;
+  bottom: 0;
+}
+.settings-footer > span {
+  font-size: 11px;
+}
+.settings-footer > div {
+  display: flex;
+  gap: 8px;
+}
+.settings-footer .button {
+  font-size: 12px;
+}
+.settings-confirm-text {
+  font-size: 13px;
+  color: #858e9d;
+  line-height: 1.85;
+}
+.settings-confirm-list {
+  color: #66758b;
+  font-size: 12px;
+  line-height: 2;
+  padding-left: 20px;
+  margin: 14px 0 18px;
+}
+.settings-content::-webkit-scrollbar,
+.settings-groups::-webkit-scrollbar {
+  width: 5px;
+}
+.settings-content::-webkit-scrollbar-thumb,
+.settings-groups::-webkit-scrollbar-thumb {
+  background: #e1e5ed;
+  border-radius: 5px;
+}
+.preference-row :is(input, textarea, button):focus-visible,
+.capsule-select-trigger:focus-visible {
+  outline: 2px solid #8292ad;
+  outline-offset: 2px;
+}
+.preference-row :is(input, textarea, button):disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.preference-row .capsule-switch {
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  width: 42px;
+  min-width: 42px;
+  height: 24px;
+  margin: 0;
+  border: 1px solid #d9dee7;
+  border-radius: 999px;
+  background: #dce1e9;
+  transition: background 0.18s, border-color 0.18s;
+}
+.preference-row .capsule-switch::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px #20212620;
+  transition: transform 0.18s;
+}
+.preference-row .capsule-switch:checked {
+  background: #63758e;
+  border-color: #63758e;
+}
+.preference-row .capsule-switch:checked::before {
+  transform: translateX(18px);
+}
+.capsule-select {
+  min-width: 0;
+  width: 100%;
+}
+.capsule-select-trigger {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  text-align: left;
+}
+.capsule-select-trigger > span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.capsule-select-trigger > svg {
+  flex-shrink: 0;
+  color: #8e98a8;
+  transition: transform 0.18s;
+}
+.capsule-select-trigger[aria-expanded="true"] > svg {
+  transform: rotate(180deg);
+}
+.capsule-select-menu {
+  position: fixed;
+  inset: auto;
+  margin: 0;
+  padding: 6px;
+  border: 1px solid #e0e5ee;
+  border-radius: 20px;
+  background: #fff;
+  color: #5c6a7e;
+  font-family: inherit;
+  font-size: 13px;
+  box-shadow: 0 8px 28px #2021261a;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  box-sizing: border-box;
+}
+.capsule-select-menu[data-open="true"] {
+  display: block;
+}
+.capsule-select-menu::backdrop {
+  background: transparent;
+}
+.capsule-select-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 40px;
+  gap: 12px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  line-height: 1.5;
+}
+.capsule-select-option > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.capsule-select-option > svg {
+  flex-shrink: 0;
+}
+.capsule-select-option.active {
+  background: #f0f3f7;
+}
+.capsule-select-option.selected {
+  color: #35465e;
+  font-weight: 600;
+}
+@media (prefers-reduced-motion: reduce) {
+  .preference-row .capsule-switch,
+  .preference-row .capsule-switch::before,
+  .capsule-select-trigger > svg {
+    transition: none;
+  }
+}
+@media (max-width: 767px) {
+  .modal.wide:not(.page-panel):has(.settings-workspace) {
+    width: 100%;
+    max-width: 100%;
+    height: calc(100dvh - 15px);
+    max-height: calc(100dvh - 15px);
+    padding: 24px 19px 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .modal:has(.settings-workspace) > .modal-heading {
+    margin-bottom: 17px;
+  }
+  .settings-workspace {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    flex: 1;
+    overflow: hidden;
+  }
+  .settings-search {
+    margin-bottom: 12px;
+    flex-shrink: 0;
+  }
+  .settings-search input {
+    font-size: 16px;
+  }
+  .settings-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    min-height: 0;
+    flex: 1;
+  }
+  .settings-groups {
+    flex-direction: row;
+    max-height: none;
+    overflow-x: auto;
+    flex-shrink: 0;
+    gap: 5px;
+    padding: 0 0 7px;
+  }
+  .settings-groups button {
+    white-space: nowrap;
+    min-width: 74px;
+    padding: 8px 11px;
+    font-size: 11px;
+    gap: 7px;
+    border: 1px solid #eceff5;
+  }
+  .settings-groups button span {
+    font-size: 9px;
+  }
+  .settings-content {
+    max-height: none;
+    flex: 1;
+    padding-right: 5px;
+  }
+  .settings-content h3 {
+    font-size: 15px;
+    margin: 10px 0;
+  }
+  .settings-scope {
+    font-size: 10px;
+  }
+  .preference-label,
+  .preference-checkbox strong {
+    font-size: 12px;
+  }
+  .preference-row input:not([type="checkbox"]),
+  .preference-row textarea,
+  .capsule-select-trigger {
+    font-size: 16px;
+    min-height: 44px;
+  }
+  .preference-checkbox {
+    min-height: 44px;
+  }
+  .preference-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 7px;
+    padding: 12px 0;
+  }
+  .preference-label {
+    padding-top: 0;
+  }
+  .preference-checkbox {
+    grid-template-columns: minmax(0, 1fr) 44px;
+    gap: 14px;
+  }
+  .settings-footer {
+    padding: 13px 0 calc(13px + env(safe-area-inset-bottom));
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+  .settings-footer .button {
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+  .settings-footer > span {
+    font-size: 11px;
+    max-width: 100%;
+    line-height: 1.6;
+    flex: 1 1 100%;
+  }
+  .settings-footer > div {
+    gap: 8px;
+    flex: 1;
+    justify-content: flex-end;
+  }
+  .watched-folder {
+    grid-template-columns: minmax(0, 1fr) 44px;
+    gap: 8px;
+  }
+  .watched-folder > label,
+  .watched-folder > .capsule-select {
+    grid-column: 1;
+  }
+  .watched-folder > button {
+    grid-column: 2;
+    grid-row: 1/4;
+  }
+  .watched-folder > input {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  .preference-input > span {
+    top: 17px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 767px) {
+  .capsule-select-menu {
+    font-size: 16px;
+  }
+  .capsule-select-option {
+    min-height: 44px;
+  }
+}

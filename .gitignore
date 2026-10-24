@@ -1,0 +1,17 @@
+node_modules/
+frontend/dist/
+src-tauri/target/
+src-tauri/gen/
+.env
+.env.*
+*.log
+*.local
+.DS_Store
+*.keystore
+*.jks
+keystore.properties
+.zcode/
+.zcode-shot-*.png
+.zcode-ui/
+.android-keystore-backup/
+.idea/

@@ -1,0 +1,56 @@
+/* 桌面应用质感：消除浏览器默认行为带来的网页感。
+   - 文本不可拖选（输入框与 .selectable 除外）
+   - 交互元素一律箭头光标，不出现网页手型
+   - 图片/链接不可拖出
+   - 细滚动条与主题色选择高亮 */
+
+body {
+  user-select: none;
+  -webkit-user-select: none;
+}
+input,
+textarea,
+[contenteditable="true"],
+[contenteditable=""] {
+  user-select: text;
+  -webkit-user-select: text;
+}
+.selectable {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+button:not(:disabled),
+a,
+label,
+summary,
+[role="button"],
+[role="tab"],
+[role="menuitem"],
+[role="option"] {
+  cursor: default;
+}
+
+img,
+a {
+  -webkit-user-drag: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(120, 126, 140, 0.28);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(120, 126, 140, 0.45);
+}
+
+::selection {
+  background: rgba(90, 130, 190, 0.28);
+}

@@ -1,0 +1,10 @@
+import { createApp } from "vue";
+import App from "./App.vue";
+import "./style.css";
+import "./styles/workspaces.css";
+import "./styles/mobile-navigation.css";
+import "./styles/components.css";
+import "./styles/motion.css";
+import "./styles/app-sidebar.css";
+import "./styles/app.css";
+createApp(App).mount("#app");

@@ -1,0 +1,33 @@
+.connection-panel .button {
+  min-height: 44px;
+  border-radius: 999px;
+}
+.connection-panel .field small {
+  color: var(--muted);
+  font-size: 12px;
+}
+.connection-loading,
+.connection-test-result {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.connection-test-result {
+  color: var(--green, #23754f);
+}
+.connection-load-error .button {
+  margin-top: 12px;
+}
+.connection-panel .connection-actions {
+  flex-wrap: wrap;
+}
+@media (max-width: 767px) {
+  .connection-panel .field input {
+    font-size: 16px;
+  }
+  .connection-panel .connection-actions .button {
+    flex: 1 1 auto;
+  }
+}

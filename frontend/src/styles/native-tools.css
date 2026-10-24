@@ -1,0 +1,237 @@
+.native-tools {
+  min-width: 0;
+}
+.native-tools button,
+.native-tools select {
+  min-height: 44px;
+}
+.native-tools .tool-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 22px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+}
+.native-tools .tool-tabs button {
+  padding: 10px 17px;
+  border: 1px solid transparent;
+  border-radius: 11px;
+  background: transparent;
+  color: var(--muted);
+}
+.native-tools .tool-tabs button[aria-selected="true"] {
+  color: var(--ink);
+  background: #edf0f5;
+  border-color: #e2e6ed;
+}
+.native-tools .tool-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 18px;
+}
+.native-tools .tool-actions .field {
+  margin: 0;
+  flex: 1 1 150px;
+}
+.native-tools form.tool-actions {
+  align-items: flex-end;
+}
+.native-tools .button > svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+.native-tools .tool-card > .tool-actions {
+  margin: 12px 0 0;
+}
+.native-tools .entity-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+.native-tools .entity-info {
+  flex: 1 1 180px;
+  min-width: 0;
+}
+.native-tools .entity-info h3,
+.native-tools .entity-info p {
+  margin: 0;
+}
+.native-tools .entity-info p {
+  margin-top: 4px;
+}
+.native-tools .entity-card > .tool-actions {
+  flex: 0 0 auto;
+  margin: 0;
+}
+.native-tools .tool-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 20px;
+}
+.native-tools .tool-split {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.8fr) minmax(0, 2fr);
+  gap: 24px;
+}
+.native-tools .tool-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  border-right: 1px solid var(--line);
+  padding-right: 18px;
+}
+.native-tools .tool-sidebar button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: left;
+  padding: 10px 12px;
+  background: transparent;
+  border: 0;
+  border-radius: 10px;
+  overflow-wrap: anywhere;
+}
+.native-tools .tool-sidebar button.selected {
+  background: #edf0f5;
+}
+.native-tools .tool-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 12px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.native-tools .tool-card h3 {
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+.native-tools .tool-card p {
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+.native-tools .tool-muted,
+.native-tools .tool-meta {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+.native-tools .tool-meta {
+  display: flex;
+  gap: 8px 16px;
+  flex-wrap: wrap;
+}
+.native-tools .tool-message {
+  padding: 12px 14px;
+  background: #f0f3f7;
+  border-radius: 10px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+.native-tools .tool-message.error {
+  background: #fff1f1;
+  color: var(--red);
+}
+.native-tools .tool-section {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.native-tools .tool-section h3 {
+  font-size: 14px;
+  margin: 0 0 16px;
+}
+.native-tools .tool-table-wrap {
+  overflow: auto;
+}
+.native-tools .tool-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.native-tools .tool-table th,
+.native-tools .tool-table td {
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  padding: 11px 12px;
+  vertical-align: top;
+}
+.native-tools .tool-table th {
+  color: var(--muted);
+  font-weight: 500;
+}
+.native-tools .tool-table td:first-child {
+  overflow-wrap: anywhere;
+}
+.native-tools .tool-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.native-tools .tool-stats div {
+  background: #f7f7f9;
+  padding: 14px;
+  border-radius: 12px;
+  min-width: 0;
+}
+.native-tools .tool-stats dt {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+.native-tools .tool-stats dd {
+  font-size: 15px;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.native-tools .tool-feed-options {
+  max-height: 220px;
+  overflow: auto;
+}
+.native-tools details > summary {
+  min-height: 44px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+.native-tools .button {
+  min-height: 44px;
+}
+@media (max-width: 640px) {
+  .native-tools .tool-grid,
+  .native-tools .tool-split {
+    grid-template-columns: 1fr;
+  }
+  .native-tools .tool-sidebar {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    padding: 0 0 12px;
+    max-height: 200px;
+    overflow: auto;
+  }
+  .native-tools .field input,
+  .native-tools .field select,
+  .native-tools .field textarea {
+    font-size: 16px;
+  }
+  .native-tools .tool-tabs {
+    gap: 2px;
+  }
+  .native-tools .tool-tabs button {
+    padding: 8px 12px;
+    flex: 1;
+  }
+  .native-tools .tool-actions .button {
+    flex-grow: 1;
+  }
+  .native-tools .tool-stats {
+    gap: 8px;
+  }
+}

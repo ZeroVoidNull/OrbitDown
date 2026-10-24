@@ -1,0 +1,171 @@
+.task-menu-trigger {
+  flex-shrink: 0;
+}
+.task-menu-popover {
+  position: fixed;
+  inset: auto;
+  margin: 0;
+  width: min(280px, calc(100vw - 24px));
+  max-height: min(560px, calc(100dvh - 24px));
+  padding: 6px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  border: 1px solid #e5e7ed;
+  border-radius: 20px;
+  background: #fffffff7;
+  box-shadow:
+    0 12px 40px #20212620,
+    0 2px 8px #20212608;
+  color: #414957;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.task-menu-popover::backdrop {
+  background: transparent;
+}
+.task-menu-popover.task-menu-form {
+  width: min(360px, calc(100vw - 24px));
+}
+.task-menu-heading {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 2px 5px;
+  border-bottom: 1px solid #eef0f4;
+  margin-bottom: 4px;
+}
+.task-menu-heading > div {
+  flex: 1;
+  min-width: 0;
+  padding: 8px;
+}
+.task-menu-heading strong {
+  font-size: 13px;
+  font-weight: 600;
+}
+.task-menu-heading small {
+  display: block;
+  margin-top: 4px;
+  color: #9198a4;
+  font-size: 11px;
+}
+.task-menu-heading .icon-button {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  color: #9299a5;
+}
+.task-menu-back {
+  transform: rotate(180deg);
+}
+.task-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 13px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #59616f;
+  text-align: left;
+  font-size: 13px;
+}
+.task-menu-item > span {
+  flex: 1;
+}
+.task-menu-item > svg {
+  flex-shrink: 0;
+  color: #9299a6;
+}
+.task-menu-item:hover,
+.task-menu-item:focus-visible {
+  background: #eff0f4;
+  color: #202126;
+  outline: none;
+}
+.task-menu-item.danger {
+  color: #bf626e;
+}
+.task-menu-item.danger > svg {
+  color: inherit;
+}
+.task-menu-error {
+  font-size: 12px;
+  padding: 12px;
+  line-height: 1.7;
+  color: #b45b67;
+  background: #fff4f4;
+  border-radius: 13px;
+  margin: 7px 0;
+}
+.task-menu-note {
+  padding: 16px;
+  font-size: 13px;
+  color: #9299a5;
+}
+.task-menu-fields {
+  padding: 14px 10px 10px;
+}
+.task-menu-fields fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+  display: grid;
+  gap: 15px;
+}
+.task-menu-fields label {
+  display: grid;
+  gap: 8px;
+  font-size: 12px;
+  color: #788291;
+}
+.task-menu-fields input,
+.task-menu-fields select {
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  border: 1px solid #e1e5ed;
+  border-radius: 999px;
+  padding: 10px 16px;
+  background: #f6f7fa;
+  color: #46505f;
+  font-size: 16px;
+}
+.task-menu-fields p {
+  font-size: 11px;
+  line-height: 1.7;
+  color: #959daa;
+  margin: 0;
+}
+.task-menu-fields footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-top: 4px;
+}
+.task-menu-fields footer .button {
+  min-height: 44px;
+  font-size: 12px;
+}
+@media (max-width: 767px) {
+  .task-menu-item {
+    font-size: 14px;
+    min-height: 46px;
+  }
+  .torrent-actions {
+    gap: 2px;
+  }
+  .torrent-row .task-menu-trigger {
+    width: 44px;
+    height: 44px;
+    display: flex;
+  }
+}
+
+/* 右键呼出的任务菜单宿主：隐藏触发按钮，仅保留弹出菜单本体。 */
+.context-menu-host > button {
+  display: none;
+}

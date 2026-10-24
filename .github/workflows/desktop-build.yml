@@ -1,0 +1,100 @@
+name: Desktop build
+
+# 推送 v* 标签时构建三平台安装包并发布 GitHub Release；
+# 手动触发（workflow_dispatch）仅构建并上传 workflow artifacts。
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  desktop:
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: macos-latest # Apple Silicon
+          - platform: ubuntu-22.04
+          - platform: windows-latest
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            frontend/package-lock.json
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri
+
+      - name: Install Linux system dependencies
+        if: matrix.platform == 'ubuntu-22.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libwebkit2gtk-4.1-dev build-essential curl wget file \
+            libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev
+
+      - name: Install frontend dependencies
+        run: |
+          npm ci
+          npm --prefix frontend ci
+
+      # Re-tagged builds: drop the stale release (and its assets) so
+      # tauri-action can recreate it cleanly against the new commit.
+      - name: Reset existing release
+        if: startsWith(github.ref, 'refs/tags/')
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete "${GITHUB_REF_NAME}" \
+            --repo "$GITHUB_REPOSITORY" --yes --cleanup-tag || true
+
+      - name: Build and release
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: v__VERSION__
+          releaseName: "OrbitDown v__VERSION__"
+          releaseBody: |
+            直连 qBittorrent 的下载管理客户端，首个桌面版本。
+
+            **主要功能**
+            - 连接即登录：填写 qBittorrent WebUI 地址与账号密码即可管理，凭据保存在系统钥匙串，下次启动自动登录
+            - 任务管理：下载/做种/暂停/删除、批量选择，进度与速度实时同步
+            - 种子添加：磁力链接、.torrent 文件，支持分类与标签
+            - 种子搜索、RSS 订阅、管理工具、完整偏好设置
+            - macOS（Apple Silicon）/ Windows / Linux 三平台原生安装包
+
+            **安装须知**（安装包未做平台签名与公证）
+            - macOS：终端执行 `xattr -dr com.apple.quarantine /Applications/OrbitDown.app` 移除隔离标记（macOS 已不支持右键打开绕过）；连接局域网 qBittorrent 需在「系统设置 → 隐私与安全性 → 本地网络」中允许本应用
+            - Windows：SmartScreen 提示时选择「更多信息 → 仍要运行」
+            - Linux：AppImage 需 `chmod +x`
+          releaseDraft: false
+          prerelease: false
+
+      - name: Upload artifacts (manual dispatch)
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: orbitdown-${{ matrix.platform }}
+          path: |
+            src-tauri/target/release/bundle/dmg/*.dmg
+            src-tauri/target/release/bundle/msi/*.msi
+            src-tauri/target/release/bundle/nsis/*.exe
+            src-tauri/target/release/bundle/deb/*.deb
+            src-tauri/target/release/bundle/appimage/*.AppImage
+            src-tauri/target/release/bundle/rpm/*.rpm
+          if-no-files-found: error

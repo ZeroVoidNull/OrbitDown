@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" fill="none">
+  <defs>
+    <linearGradient id="orbit" x1="80" y1="870" x2="1490" y2="90" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#99a4b8" stop-opacity=".04"/>
+      <stop offset=".42" stop-color="#8492aa" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#a2a8b8" stop-opacity=".04"/>
+    </linearGradient>
+    <radialGradient id="sphere" cx="0" cy="0" r="1" gradientTransform="translate(1208 174) rotate(52) scale(63)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff" stop-opacity=".95"/>
+      <stop offset=".65" stop-color="#dfe4ed" stop-opacity=".6"/>
+      <stop offset="1" stop-color="#a5afc1" stop-opacity=".25"/>
+    </radialGradient>
+    <radialGradient id="halo"><stop stop-color="#fff" stop-opacity=".8"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <g stroke="url(#orbit)" stroke-width="1">
+    <ellipse cx="780" cy="495" rx="1230" ry="350" transform="rotate(-24 780 495)"/>
+    <ellipse cx="780" cy="495" rx="1230" ry="365" transform="rotate(-24 780 495)"/>
+    <ellipse cx="790" cy="530" rx="1150" ry="580" transform="rotate(-24 790 530)" opacity=".38"/>
+  </g>
+  <circle cx="1230" cy="194" r="80" fill="url(#halo)"/>
+  <circle cx="1230" cy="194" r="25" fill="url(#sphere)" stroke="#fff" stroke-opacity=".7"/>
+  <circle cx="1010" cy="271" r="4" fill="#fff" stroke="#a2aec0" stroke-opacity=".3"/>
+  <circle cx="356" cy="757" r="8" fill="#e8ecf3" stroke="#fff"/>
+</svg>

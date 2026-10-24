@@ -1,0 +1,265 @@
+/* 页面分离布局：固定顶栏 + 左侧导航 + 主内容区。
+   桌面为侧栏导航，移动端侧栏隐藏并沿用底部导航。 */
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+.app-body {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+.app-sidebar {
+  flex: 0 0 auto;
+  width: 212px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 14px 14px;
+  border-right: 1px solid rgba(218, 221, 228, 0.6);
+  background: rgba(246, 246, 249, 0.72);
+}
+.app-sidebar-head {
+  flex: 0 0 auto;
+  height: 46px;
+}
+.app-main-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.app-sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.app-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-height: 44px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  color: #6e6e73;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  transition:
+    background var(--motion-base) ease,
+    color var(--motion-base) ease,
+    box-shadow var(--motion-base) ease;
+}
+.app-nav-item:hover {
+  background: rgba(255, 255, 255, 0.72);
+  color: #1d1d1f;
+}
+.app-nav-item.active {
+  background: #fff;
+  color: #1d1d1f;
+  font-weight: 600;
+  box-shadow: 0 2px 6px #2021260a;
+}
+.app-sidebar-foot {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px 6px 2px;
+  border-top: 1px solid rgba(218, 221, 228, 0.6);
+}
+.app-sidebar-foot .speed-mode-toggle {
+  width: 100%;
+  justify-content: flex-start;
+  font-size: 11px;
+}
+.app-sidebar-foot .version {
+  font-size: 11px;
+  color: #98a1ad;
+  padding: 0 6px;
+}
+
+/* 主内容区：页面在此切换与滚动 */
+.main-container {
+  flex: 1;
+  min-height: 0;
+  /* flex 交叉轴上的 auto margin 会关闭 stretch，宽度退化成内容宽，
+     显式拉满，保证各页面面板宽度一致 */
+  width: 100%;
+  overflow-y: auto;
+  /* 滚动条槽常驻，避免内容长短变化引起页面卡片宽度 8px 抖动 */
+  scrollbar-gutter: stable;
+  padding-top: 12px;
+}
+
+/* 自绘窗口控制（decorations: false）：贴合页面风格的中性线条按钮 */
+.traffic-dock {
+  position: fixed;
+  top: 10px;
+  left: 12px;
+  z-index: 300;
+  display: flex;
+  gap: 2px;
+}
+.window-control {
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 0;
+  margin: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: #90929d;
+  background: transparent;
+  transition:
+    background var(--motion-fast) ease,
+    color var(--motion-fast) ease;
+}
+.window-control:hover {
+  background: #e9e9ef;
+  color: #202126;
+}
+.window-control:active {
+  background: #dfdfe8;
+}
+.window-control.close:hover {
+  background: #f6e5e7;
+  color: var(--red, #b34b56);
+}
+.window-control.close:active {
+  background: #efd5d9;
+}
+
+/* 内嵌页面面板（ModalShell embedded 模式）。
+   页面唯一滚动：main-container 是唯一滚动容器，面板自身不滚动。 */
+.page-panel {
+  box-shadow: none;
+  border-radius: 24px;
+  max-width: 1120px;
+  margin: 0 auto 26px;
+  min-height: calc(100% - 26px);
+  display: flex;
+  flex-direction: column;
+  max-height: none;
+  overflow: visible;
+}
+.page-panel .modal-heading {
+  flex: 0 0 auto;
+}
+.page-panel > :not(.modal-heading) {
+  flex: 1 0 auto;
+}
+/* 宽度按容器计算而非视口（侧栏已占用宽度） */
+.page-panel.wide {
+  width: min(1120px, 100%);
+}
+/* 设置页作为页面时取消内层滚动，页面统一滚动 */
+.page-panel .settings-content {
+  max-height: none;
+  overflow: visible;
+  overscroll-behavior: auto;
+}
+/* 设置页桌面布局：分组单行横排，溢出时以两侧箭头滑动（不换行） */
+@media (min-width: 768px) {
+  .page-panel .settings-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .page-panel .settings-groups {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    gap: 5px;
+    max-height: none;
+    padding: 5px;
+  }
+  .page-panel .settings-groups::-webkit-scrollbar {
+    display: none;
+  }
+}
+.groups-scroller {
+  position: relative;
+  min-width: 0;
+}
+.group-arrow {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  z-index: 2;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 1px solid #e2e4ea;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.96);
+  color: #667084;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 2px 10px #20212614;
+}
+.group-arrow:hover {
+  color: #202126;
+}
+.group-arrow.left {
+  left: 3px;
+}
+.group-arrow.right {
+  right: 3px;
+}
+
+/* 桌面隐藏页面底部条（信息已并入侧栏底部） */
+.app-footer {
+  display: none;
+}
+
+/* 任务页标题行的移动端工具入口 */
+.mobile-tools {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .app-shell {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+  .app-body {
+    flex-direction: column;
+  }
+  .app-sidebar {
+    display: none;
+  }
+  .app-main-col {
+    min-height: 0;
+  }
+  .site-header {
+    /* edge-to-edge 下避开状态栏/打孔屏；移动端无自绘窗口按钮，不需要 78px 让位 */
+    padding: calc(14px + env(safe-area-inset-top, 0px)) 20px 0;
+    height: auto;
+    min-height: 66px;
+  }
+  .main-container {
+    overflow: visible;
+    padding-top: 10px;
+  }
+  .app-footer {
+    display: flex;
+  }
+  .page-panel {
+    max-width: none;
+    margin: 0 4px 20px;
+    min-height: 0;
+    border-radius: 20px;
+  }
+  .mobile-tools {
+    display: inline-flex;
+  }
+  .task-heading-actions .add-button {
+    display: none;
+  }
+}
